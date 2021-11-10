@@ -25,6 +25,6 @@ machine to-do
 
 arch linux with raspberry pi pico
 ```sh
-sudo paru -S adafruit-ampy micropython-git
+paru -S adafruit-ampy micropython-git
 sudo ampy -p /dev/ttyACM0 run main.py
 ```
