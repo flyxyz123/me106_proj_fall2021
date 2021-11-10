@@ -15,6 +15,8 @@ software/electric to-do
 	- find datasheets
 	- resistors voltage divider for joystick ADC output? 
 		- joystick seems need 5V input, and output range from 0 to 5V. Where pi pico ADC input highest is 3.3V, may need voltage divider for better input read.
+- maybe
+	- state machine
 
 machine to-do
 - a lot 🙃
