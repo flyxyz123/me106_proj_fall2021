@@ -4,29 +4,31 @@
 
 software/electric to-do
 - high priority
-	- more sensors
-		- sensor for detecting ball drop into the hole
-			- crash sensor? like a switch, not count as one
-	- display (LCD?)
+	- photo resistor with laser
+	- LCD display
 - low priority
 	- game logic?
 		- score
-	- find a use for joystick switch `joyk`
-	- find datasheets
+	- joystick switch to start game
+	- crash sensor (switch) to flip control
 	- resistors voltage divider for joystick ADC output? 
 		- joystick seems need 5V input, and output range from 0 to 5V. Where pi pico ADC input highest is 3.3V, may need voltage divider for better input read.
 - maybe
 	- state machine
 
 machine to-do
-- a lot 🙃
+- glue parts
+- hole
 
 ## usage
 
 arch linux with raspberry pi pico
 ```sh
 paru -S adafruit-ampy micropython-git tio-git
+# run from computer
 sudo ampy -p /dev/ttyACM0 run main.py
-# view outptu
+# save to microcontroller
+#sudo ampy -p /dev/ttyACM0 put main.py
+# view output
 sudo tio /dev/ttyACM0
 ```
