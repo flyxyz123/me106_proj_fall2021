@@ -94,49 +94,51 @@ def clearScreen():
     #longDelay(2)#clear screen needs a long delay
     rs.value(1)
 
-joyk = machine.Pin(2, machine.Pin.IN)
-
-PWM_MAX = const(65535)
-# 2000 to 7000
-DUTY_MIN = const(3000)
-DUTY_MAX = const(6000)
-PHOTO_THRESHOLD = const(30000)
-
-servo0 = machine.PWM(machine.Pin(0))
-servo1 = machine.PWM(machine.Pin(1))
-servo0.freq(50)
-servo1.freq(50)
-
-joyx = machine.ADC(26)
-joyy = machine.ADC(27)
-photo = machine.ADC(28)
-
-game = False;
-start_time=time.ticks_ms()
-
 def servo_joy (servo, var):
     pos = (DUTY_MAX-DUTY_MIN)*var//PWM_MAX+DUTY_MIN
     #print("pos", pos)
     servo.duty_u16(pos)
     time.sleep_us(1)
 
+joyk = machine.Pin(2, machine.Pin.IN)
+
+PWM_MAX = const(65535)
+# 2000 to 7000
+DUTY_MIN = const(3500)
+DUTY_MAX = const(5500)
+DUTY_MID = const((DUTY_MIN+DUTY_MAX)//2)
+PHOTO_THRESHOLD = const(25000)
+
+servo0 = machine.PWM(machine.Pin(0))
+servo1 = machine.PWM(machine.Pin(1))
+servo0.freq(50)
+servo1.freq(50)
+servo0.duty_u16(DUTY_MID)
+servo1.duty_u16(DUTY_MID)
+
+joyx = machine.ADC(26)
+joyy = machine.ADC(27)
+photo = machine.ADC(28)
+
 setupLCD()
 clearScreen()
 game = False
+start_time=time.ticks_ms()
 while True:
-    #print("photo", photo.read_u16())
+    print("photo", photo.read_u16())
     #print("joyx", joyx.read_u16())
     #print("joyy", joyy.read_u16())
     #print("game", game)
-    if joyk.value() == 0:
+    if game == False and joyk.value() == 0:
         game = True
         start_time = time.ticks_ms()
         clearScreen()
-    else:
-        if photo.read_u16() < PHOTO_THRESHOLD:
-            game = False
+    elif game == True and photo.read_u16() < PHOTO_THRESHOLD:
+        game = False
+        servo0.duty_u16(DUTY_MID)
+        servo1.duty_u16(DUTY_MID)
     if game == True:
-        displayString(2,0,str(time.ticks_ms()-start_time))
+        displayString(1,0,str(time.ticks_ms()-start_time))
         servo_joy(servo0, joyx.read_u16())
         servo_joy(servo1, joyy.read_u16())
-    time.sleep_us(1)
+    time.sleep_ms(1)
