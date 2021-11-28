@@ -3,22 +3,15 @@
 ## notes
 
 software/electric to-do
-- high priority
-	- photo resistor with laser
-	- LCD display
 - low priority
 	- game logic?
-		- score
-	- joystick switch to start game
+		- store fastest time to complete game
 	- crash sensor (switch) to flip control
 	- resistors voltage divider for joystick ADC output? 
 		- joystick seems need 5V input, and output range from 0 to 5V. Where pi pico ADC input highest is 3.3V, may need voltage divider for better input read.
-- maybe
-	- state machine
 
 machine to-do
-- glue parts
-- hole
+- make laser more stable
 
 ## usage
 
