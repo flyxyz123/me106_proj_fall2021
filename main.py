@@ -104,10 +104,10 @@ joyk = machine.Pin(2, machine.Pin.IN)
 
 PWM_MAX = const(65535)
 # 2000 to 7000
-DUTY_MIN = const(3500)
-DUTY_MAX = const(5500)
+DUTY_MIN = const(3000)
+DUTY_MAX = const(6000)
 DUTY_MID = const((DUTY_MIN+DUTY_MAX)//2)
-PHOTO_THRESHOLD = const(25000)
+PHOTO_THRESHOLD = const(44000)
 
 servo0 = machine.PWM(machine.Pin(0))
 servo1 = machine.PWM(machine.Pin(1))
