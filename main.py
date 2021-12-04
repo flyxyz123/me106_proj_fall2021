@@ -1,4 +1,4 @@
-# lcd codes steal from 
+# lcd code taken from: 
 # https://github.com/Circuit-Digest/Raspberry_Pi_Pico_Tutorial/tree/main/T5_Interfacing_LCD/codes
 # https://circuitdigest.com/microcontroller-projects/interfacing-raspberry-pi-pico-with-16x2-lcd-using-micropython
 import machine
